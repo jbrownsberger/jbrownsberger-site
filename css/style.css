@@ -1,18 +1,17 @@
 /* ===========================
    Joseph Brownsberger — Site Styles
-   Clean, light, liquid-glass aesthetic
+   Clean, light, liquid-glass aesthetic — staid serif typography, flat color (no gradients)
    =========================== */
 
 :root {
   --bg-base: #f4f1ea;
-  --bg-base-2: #eef2ee;
   --accent-navy: #1f3b57;
   --accent-gold: #b8863b;
   --accent-forest: #2f5d4f;
   --text-main: #1c2430;
   --text-soft: #4a5568;
   --glass-bg: rgba(255, 255, 255, 0.45);
-  --glass-bg-strong: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.65);
   --glass-shadow: 0 8px 32px rgba(31, 59, 87, 0.12);
   --radius-lg: 28px;
@@ -29,19 +28,23 @@ html, body {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--text-main);
-  background: linear-gradient(160deg, var(--bg-base) 0%, var(--bg-base-2) 55%, #eaf0ec 100%);
+  background-color: var(--bg-base);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
 
 h1, h2, h3 {
-  font-family: 'Fraunces', Georgia, serif;
-  font-weight: 500;
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--accent-navy);
+}
+
+.brand, .tagline, .pub-title {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif;
 }
 
 a {
@@ -58,7 +61,7 @@ p {
   color: var(--text-soft);
 }
 
-/* ---------- Background orbs (subtle liquid color) ---------- */
+/* ---------- Background orbs (flat solid color, no gradient) ---------- */
 .bg-orbs {
   position: fixed;
   inset: 0;
@@ -70,14 +73,14 @@ p {
 .orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.35;
+  filter: blur(70px);
+  opacity: 0.16;
 }
 
 .orb-1 {
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, var(--accent-gold), transparent 70%);
+  background: var(--accent-gold);
   top: -120px;
   left: -100px;
 }
@@ -85,7 +88,7 @@ p {
 .orb-2 {
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, var(--accent-forest), transparent 70%);
+  background: var(--accent-forest);
   top: 40%;
   right: -160px;
 }
@@ -93,10 +96,10 @@ p {
 .orb-3 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, var(--accent-navy), transparent 70%);
+  background: var(--accent-navy);
   bottom: -160px;
   left: 30%;
-  opacity: 0.18;
+  opacity: 0.10;
 }
 
 /* ---------- Liquid glass core ---------- */
@@ -105,18 +108,9 @@ p {
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
   position: relative;
-}
-
-.glass::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0) 40%);
-  pointer-events: none;
 }
 
 /* ---------- Header / Nav ---------- */
@@ -139,7 +133,6 @@ p {
 }
 
 .brand {
-  font-family: 'Fraunces', serif;
   font-weight: 600;
   font-size: 1.05rem;
   color: var(--accent-navy);
@@ -177,32 +170,15 @@ p {
 .hero-bg-photo {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #26415c 0%, #2f5d4f 55%, #b8863b 130%);
+  background-color: var(--accent-navy);
   background-size: cover;
   background-position: center;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 12px;
-}
-
-/* When you add a real photo, set this on the element or via inline style:
-   background-image: url('assets/images/hero-landscape.jpg'); */
-
-.photo-placeholder-label {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.75);
-  background: rgba(0,0,0,0.25);
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-family: 'Inter', sans-serif;
-  letter-spacing: 0.02em;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15,25,35,0.35) 0%, rgba(15,25,35,0.55) 100%);
+  background: rgba(15, 25, 35, 0.42);
 }
 
 .hero-content {
@@ -221,26 +197,16 @@ p {
   border-radius: 50%;
   padding: 6px;
   background: var(--glass-bg-strong);
+  overflow: hidden;
 }
 
-.headshot-placeholder {
+.headshot-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 0.62rem;
-  color: rgba(255,255,255,0.85);
-  border: 1px dashed rgba(255,255,255,0.5);
-  line-height: 1.4;
-  padding: 8px;
+  display: block;
 }
-
-/* When you add a real headshot, replace .headshot-placeholder content with:
-   <img src="assets/images/headshot.jpg" alt="Joseph Brownsberger"> and style img { width:100%; height:100%; object-fit:cover; border-radius:50%; } */
 
 .hero h1 {
   color: #fff;
@@ -287,12 +253,12 @@ p {
 .btn-primary {
   background: var(--accent-gold);
   color: #fff;
-  box-shadow: 0 6px 20px rgba(184, 134, 59, 0.35);
+  box-shadow: 0 6px 18px rgba(184, 134, 59, 0.3);
 }
 
 .btn-primary:hover {
   color: #fff;
-  box-shadow: 0 10px 26px rgba(184, 134, 59, 0.45);
+  box-shadow: 0 8px 22px rgba(184, 134, 59, 0.4);
 }
 
 .btn-secondary {
