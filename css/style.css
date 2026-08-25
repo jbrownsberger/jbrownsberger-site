@@ -1,0 +1,455 @@
+/* ===========================
+   Joseph Brownsberger — Site Styles
+   Clean, light, liquid-glass aesthetic
+   =========================== */
+
+:root {
+  --bg-base: #f4f1ea;
+  --bg-base-2: #eef2ee;
+  --accent-navy: #1f3b57;
+  --accent-gold: #b8863b;
+  --accent-forest: #2f5d4f;
+  --text-main: #1c2430;
+  --text-soft: #4a5568;
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-bg-strong: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-shadow: 0 8px 32px rgba(31, 59, 87, 0.12);
+  --radius-lg: 28px;
+  --radius-md: 20px;
+  --radius-sm: 14px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text-main);
+  background: linear-gradient(160deg, var(--bg-base) 0%, var(--bg-base-2) 55%, #eaf0ec 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--accent-navy);
+}
+
+a {
+  color: var(--accent-navy);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-gold);
+}
+
+p {
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+/* ---------- Background orbs (subtle liquid color) ---------- */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+}
+
+.orb-1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, var(--accent-gold), transparent 70%);
+  top: -120px;
+  left: -100px;
+}
+
+.orb-2 {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, var(--accent-forest), transparent 70%);
+  top: 40%;
+  right: -160px;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent-navy), transparent 70%);
+  bottom: -160px;
+  left: 30%;
+  opacity: 0.18;
+}
+
+/* ---------- Liquid glass core ---------- */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  position: relative;
+}
+
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0) 40%);
+  pointer-events: none;
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  position: sticky;
+  top: 16px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.nav-glass {
+  width: min(1100px, 94%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  border-radius: 999px;
+}
+
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--accent-navy);
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  font-size: 0.92rem;
+}
+
+.nav-links a {
+  color: var(--text-main);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--accent-gold);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 20px 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.hero-bg-photo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #26415c 0%, #2f5d4f 55%, #b8863b 130%);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12px;
+}
+
+/* When you add a real photo, set this on the element or via inline style:
+   background-image: url('assets/images/hero-landscape.jpg'); */
+
+.photo-placeholder-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.75);
+  background: rgba(0,0,0,0.25);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,25,35,0.35) 0%, rgba(15,25,35,0.55) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 40px 24px;
+  max-width: 640px;
+}
+
+.headshot-frame {
+  width: 148px;
+  height: 148px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  padding: 6px;
+  background: var(--glass-bg-strong);
+}
+
+.headshot-placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.85);
+  border: 1px dashed rgba(255,255,255,0.5);
+  line-height: 1.4;
+  padding: 8px;
+}
+
+/* When you add a real headshot, replace .headshot-placeholder content with:
+   <img src="assets/images/headshot.jpg" alt="Joseph Brownsberger"> and style img { width:100%; height:100%; object-fit:cover; border-radius:50%; } */
+
+.hero h1 {
+  color: #fff;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  margin: 0 0 6px;
+}
+
+.tagline {
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 18px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.hero-sub {
+  color: rgba(255,255,255,0.92);
+  font-size: 1.05rem;
+  margin-bottom: 28px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.btn {
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--accent-gold);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(184, 134, 59, 0.35);
+}
+
+.btn-primary:hover {
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(184, 134, 59, 0.45);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.3);
+  color: #fff;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  width: min(1000px, 90%);
+  margin: 60px auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 28px;
+  font-size: 1.6rem;
+}
+
+.card {
+  padding: 40px 44px;
+}
+
+.about-card h2, .contact-card h2 {
+  margin-top: 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.small-card {
+  padding: 28px 30px;
+}
+
+.small-card h3 {
+  margin-top: 0;
+  font-size: 1.15rem;
+  color: var(--accent-forest);
+}
+
+.small-card p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.contact-card {
+  text-align: center;
+}
+
+.contact-card .hero-actions {
+  margin-top: 20px;
+}
+
+.contact-card .btn-primary,
+.contact-card .btn-secondary {
+  color: #fff;
+}
+
+.contact-card .btn-secondary {
+  background: rgba(31,59,87,0.08);
+  color: var(--accent-navy);
+  border: 1px solid rgba(31,59,87,0.25);
+}
+
+.contact-card .btn-secondary:hover {
+  background: rgba(31,59,87,0.14);
+  color: var(--accent-navy);
+}
+
+/* ---------- Publications page ---------- */
+.pub-main {
+  width: min(1000px, 90%);
+  margin: 0 auto;
+}
+
+.pub-hero {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.pub-hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.pub-card {
+  padding: 36px 42px;
+}
+
+.pub-card h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  border-bottom: 1px solid rgba(31,59,87,0.15);
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.pub-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pub-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(31,59,87,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pub-list li:last-child {
+  border-bottom: none;
+}
+
+.pub-title {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 1.02rem;
+}
+
+.pub-meta {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px 50px;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .nav-links {
+    gap: 14px;
+    font-size: 0.82rem;
+  }
+  .card, .pub-card {
+    padding: 28px 24px;
+  }
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero {
+    min-height: 88vh;
+    margin: 12px 12px 0;
+  }
+}
